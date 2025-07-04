@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Resource Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tab-btn.active {
+            border-bottom-color: #3b82f6;
+            color: #3b82f6;
+        }
+        .search-highlight {
+            background-color: #fdba74;
+            border-radius: 3px;
+            padding: 1px 2px;
+            font-weight: 600;
+        }
+        .important-notice {
+            background-color: #fffbeb;
+            border-left: 4px solid #facc15;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center">
+                    <svg class="h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                    </svg>
+                    <h1 class="text-xl sm:text-2xl font-bold text-gray-800 ml-3">Community Resource Guide</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                     <!-- Google Translate Widget -->
+                    <div id="google_translate_element"></div>
+                </div>
+            </div>
+             <div class="py-4">
+                <div class="relative">
+                    <input type="search" id="searchInput" placeholder="Search the entire guide..." class="w-full pl-10 pr-4 py-2 border rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-4 sm:p-6 lg:p-8">
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <!-- Intro Text -->
+            <div class="mb-6 pb-4 border-b">
+                 <p class="text-lg text-gray-700">Recent legislative changes can be confusing and frightening. This site aims to provide an overview of changes to critical programs, how to prepare for these changes, and important dates and deadlines. Use the tabs below to explore different topics or use the search bar to find specific information. This is a living document and may be updated over time with additional resources.</p>
+            </div>
+
+            <!-- This container holds the normal tabbed view -->
+            <div id="tab-view-container">
+                <!-- Tabs Navigation -->
+                <div class="border-b border-gray-200">
+                    <nav id="tabs" class="-mb-px flex flex-wrap space-x-2 sm:space-x-4" aria-label="Tabs">
+                        <button class="tab-btn active whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm sm:text-base" data-tab="aca">ACA Coverage</button>
+                        <button class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm sm:text-base" data-tab="age-55-64">Ages 55-64</button>
+                        <button class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm sm:text-base" data-tab="federal-retirement">Federal & SS Retirement</button>
+                        <button class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm sm:text-base" data-tab="immigration">Immigration & Asylum</button>
+                        <button class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm sm:text-base" data-tab="job-loss">Job Loss</button>
+                        <button class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm sm:text-base" data-tab="medicaid">Medicaid Renewal</button>
+                        <button class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm sm:text-base" data-tab="medicare-cuts">Medicare Cuts</button>
+                        <button class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm sm:text-base" data-tab="planned-parenthood">Planned Parenthood</button>
+                        <button class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm sm:text-base" data-tab="prescriptions">Prescription Discounts</button>
+                        <button class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm sm:text-base" data-tab="rural-hospitals">Rural Hospitals</button>
+                        <button class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm sm:text-base" data-tab="snap">SNAP</button>
+                        <button class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm sm:text-base" data-tab="social-security">Social Security</button>
+                        <button class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm sm:text-base" data-tab="student-loans">Student Loans</button>
+                    </nav>
+                </div>
+
+                <!-- Tab Content Area -->
+                <div id="tab-contents" class="py-6">
+                    <!-- ACA Coverage Tab -->
+                    <div id="aca" class="tab-content active">
+                        <h2 class="text-2xl font-bold mb-4 text-blue-700">ACA Coverage Checklist (2025)</h2>
+                        <div class="important-notice">
+                            <h3 class="font-bold text-lg text-yellow-800">Action Required: Your Coverage May Be At Risk</h3>
+                            <p class="text-yellow-700 mt-1">Recent changes mean enrollment periods are shorter and verification requirements are stricter. Relying on auto-renewal may result in losing your subsidies or being enrolled in a plan that no longer meets your needs. It is critical to actively review your options and submit all required documents on time to avoid a gap in your health coverage.</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Key Dates & Deadlines</h3>
+                                <ul class="list-disc list-inside space-y-2 text-gray-600">
+                                    <li><strong>Open Enrollment Starts:</strong> November 1, 2025 <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=ACA%20Open%20Enrollment%20Begins&dates=20251101/20251102&details=Time%20to%20review%20and%20enroll%20in%20a%202026%20health%20plan%20on%20Healthcare.gov." target="_blank" rel="noopener noreferrer" class="ml-2 text-blue-600 hover:underline text-sm font-medium">[+ Add to Calendar]</a></li>
+                                    <li><strong>Open Enrollment Ends:</strong> December 15, 2025 <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=DEADLINE:%20ACA%20Open%20Enrollment%20Ends&dates=20251215/20251216&details=Last%20day%20to%20enroll%20in%20a%202026%20health%20plan%20on%20Healthcare.gov%20for%20coverage%20starting%20Jan%201." target="_blank" rel="noopener noreferrer" class="ml-2 text-blue-600 hover:underline text-sm font-medium">[+ Add to Calendar]</a></li>
+                                    <li><strong>Special Enrollment:</strong> Apply within 30 days of a life change (like job loss).</li>
+                                    <li><strong>Verification Deadline:</strong> Submit documents within 30 days of enrollment.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Documents You'll Need</h3>
+                                 <p class="text-gray-600 mb-2">Gather these documents to make enrollment smoother:</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li><strong>Proof of Income:</strong> Recent pay stubs, 2024 tax return, or unemployment letter.</li>
+                                    <li><strong>Proof of Identity:</strong> Driver's license or other government-issued ID.</li>
+                                    <li><strong>Proof of Residency/Citizenship:</strong> U.S. passport, green card, or work permit.</li>
+                                    <li><strong>Health Insurance Info:</strong> Current plan details and any notices from Healthcare.gov.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Pro Tips</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Don't rely on auto-renewal. Review your plan each year to ensure it still fits your needs.</li>
+                                    <li>Set calendar reminders for key enrollment dates.</li>
+                                    <li>Save all official emails and mail from the Health Insurance Marketplace.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Need Help?</h3>
+                                <p class="text-gray-600">For official help and enrollment, contact the Health Insurance Marketplace.</p>
+                                <p class="text-gray-600"><strong>Phone:</strong> <a href="tel:1-800-318-2596" class="text-blue-600 hover:underline">1-800-318-2596</a></p>
+                                <p class="text-gray-600"><strong>Website:</strong> <a href="https://www.healthcare.gov" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">www.healthcare.gov</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Age 55-64 Tab -->
+                    <div id="age-55-64" class="tab-content">
+                        <h2 class="text-2xl font-bold mb-4 text-blue-700">Health Coverage Guide for Adults Age 55-64 (2025)</h2>
+                        <div class="important-notice">
+                            <h3 class="font-bold text-lg text-yellow-800">Action Required: Secure Your Health Coverage Before Medicare</h3>
+                             <p class="text-yellow-700 mt-1">The years leading up to Medicare eligibility can be a high-risk period for unexpected health issues and rising insurance costs. It is critical to secure comprehensive coverage during this time. Be cautious of plans that seem too good to be true, such as "health-sharing ministries," which are not real insurance and can leave you with massive bills. Making an informed choice now is vital for your health and financial security.</p>
+                        </div>
+                         <div class="space-y-6">
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">What To Do</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li><strong>Review ACA Plans Annually:</strong> Your needs and plan options can change, especially if your income is near a subsidy threshold.</li>
+                                    <li><strong>Consider Health Savings Accounts (HSAs):</strong> If you choose a high-deductible health plan (HDHP), an HSA allows you to save tax-free money for medical costs.</li>
+                                    <li><strong>Learn About 'Medicare Bridge' Options:</strong> These are private plans that can cover you in the years just before you become eligible for Medicare.</li>
+                                    <li><strong>Beware of "Health-Sharing Ministries":</strong> These are not insurance, are unregulated, and can deny coverage for pre-existing conditions.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Pro Tips</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Estimate your yearly healthcare needs before picking a plan—don't just focus on the monthly premium.</li>
+                                    <li>Keep a personal medical history record to make switching plans easier.</li>
+                                    <li>Ask your doctors which insurance plans they accept; you may find more affordable options.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Key Resources</h3>
+                                 <p class="text-gray-600">Get reliable information and assistance.</p>
+                                <p class="text-gray-600"><strong>Healthcare.gov:</strong> <a href="https://www.healthcare.gov" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">www.healthcare.gov</a></p>
+                                <p class="text-gray-600"><strong>SHIP Counselors (Free, unbiased help):</strong> <a href="https://www.shiphelp.org" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">www.shiphelp.org</a></p>
+                                 <p class="text-gray-600"><strong>Medicare Basics:</strong> <a href="https://www.medicare.gov" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">www.medicare.gov</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Federal & SS Retirement Tab -->
+                    <div id="federal-retirement" class="tab-content">
+                        <h2 class="text-2xl font-bold mb-4 text-blue-700">Federal & SS Retirement Guide (2025)</h2>
+                        <div class="important-notice">
+                            <h3 class="font-bold text-lg text-yellow-800">Action Required: Your Retirement Benefits May Change</h3>
+                            <p class="text-yellow-700 mt-1">New federal budget proposals aim to limit cost-of-living adjustments (COLAs), raise the full retirement age, and potentially shift some federal retirement systems toward privatized models. These changes could significantly impact both current and future Social Security recipients and federal workers.</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Steps to Take Now</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li><strong>Check your estimated Social Security benefits</strong> regularly via your online account.</li>
+                                    <li><strong>Re-evaluate your retirement timeline,</strong> especially if you are under age 60.</li>
+                                    <li><strong>Federal employees:</strong> Review your FERS/CSRS balance and pension projections carefully.</li>
+                                    <li>Talk to a trusted financial advisor about diversifying your retirement income streams (e.g., annuities, Roth IRAs).</li>
+                                    <li>Track congressional discussions that affect COLAs or federal retirement formulas.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Tips & Warnings</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Delayed retirement credits may be reduced, meaning waiting to retire won't provide the same benefit increase as in the past.</li>
+                                    <li>Expect smaller COLAs and potentially tighter eligibility rules for disability claims.</li>
+                                    <li>Federal workers nearing retirement should closely monitor their Thrift Savings Plan (TSP) options and any proposed changes.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Resources & Hotlines</h3>
+                                <p class="text-gray-600">Use these official resources for planning and information.</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li><strong>SSA Account & Estimator:</strong> <a href="https://www.ssa.gov/myaccount" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">ssa.gov/myaccount</a></li>
+                                    <li><strong>Federal Retirement (TSP):</strong> <a href="https://www.tsp.gov" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">tsp.gov</a></li>
+                                    <li><strong>Federal Employee Advocacy:</strong> <a href="https://www.narfe.org" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">NARFE (National Active and Retired Federal Employees)</a></li>
+                                    <li><strong>Social Security Hotline:</strong> <a href="tel:1-800-772-1213" class="text-blue-600 hover:underline">1-800-772-1213</a></li>
+                                    <li><strong>TSP ThriftLine:</strong> <a href="tel:1-877-968-3778" class="text-blue-600 hover:underline">1-877-968-3778</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Immigration & Asylum Tab -->
+                    <div id="immigration" class="tab-content">
+                        <h2 class="text-2xl font-bold mb-4 text-blue-700">Immigration & Asylum Access Guide (2025)</h2>
+                        <div class="important-notice">
+                            <h3 class="font-bold text-lg text-yellow-800">Action Required: Know Your Rights and Prepare for Delays</h3>
+                            <p class="text-yellow-700 mt-1">Recent budget changes are expected to slash asylum processing funds, expand detention, and increase deportation enforcement. These actions will likely reduce access to legal aid and significantly delay protection for vulnerable migrants. Proactive planning is essential.</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Steps to Take Now</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li><strong>Seek legal counsel immediately</strong> if you or a loved one has an open immigration case.</li>
+                                    <li><strong>Connect with local immigrant rights organizations</strong> now, before a crisis arises.</li>
+                                    <li><strong>Gather and make copies of all important documents</strong> (passports, IDs, marriage certificates, proof of presence).</li>
+                                    <li><strong>Avoid "notario" fraud.</strong> Only trust accredited legal representatives or attorneys.</li>
+                                    <li>Subscribe to updates from legal organizations monitoring changes in your area.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Tips & Warnings</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Funding cuts will likely delay court dates and reduce access to free legal services. Plan for long waits.</li>
+                                    <li><strong>Know your rights</strong> if you have an encounter with ICE. You have the right to remain silent and to speak with an attorney. Do not sign anything without legal help.</li>
+                                    <li>Document every interaction with immigration officials. Keep all notices, receipts, and records in a safe place.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Resources & Hotlines</h3>
+                                <p class="text-gray-600">Use these resources for free or low-cost legal help and information.</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li><strong>Free Legal Help:</strong> <a href="https://www.immigrationhelp.org" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">ImmigrationHelp.org</a></li>
+                                    <li><strong>Know Your Rights:</strong> <a href="https://www.aclu.org/issues/immigrants-rights" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">ACLU Immigrants' Rights Project</a></li>
+                                    <li><strong>Legal Updates & Analysis:</strong> <a href="https://www.nilc.org" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">National Immigration Law Center (NILC)</a></li>
+                                    <li><strong>Immigration Legal Hotline:</strong> <a href="tel:1-800-528-4044" class="text-blue-600 hover:underline">1-800-528-4044</a></li>
+                                    <li><strong>Youth & DACA Hotline:</strong> <a href="tel:1-844-363-1423" class="text-blue-600 hover:underline">United We Dream Hotline (1-844-363-1423)</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Job Loss Tab -->
+                    <div id="job-loss" class="tab-content">
+                        <h2 class="text-2xl font-bold mb-4 text-blue-700">Health Coverage After Job Loss (2025)</h2>
+                        <div class="important-notice">
+                            <h3 class="font-bold text-lg text-yellow-800">Action Required: You Have a Limited Time to Get New Coverage</h3>
+                            <p class="text-yellow-700 mt-1">Losing your job-based health insurance triggers a Special Enrollment Period, but this window is very short (often only 30-60 days). A gap in coverage, no matter how brief, exposes you to the full cost of any medical care you might need. Acting immediately to explore ACA Marketplace or Medicaid options is the only way to protect yourself and your family from potentially catastrophic medical bills.</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Immediate Steps to Take</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li><strong>Act Fast:</strong> Losing job-based coverage qualifies you for a Special Enrollment Period on the ACA Marketplace, but you must apply quickly.</li>
+                                    <li><strong>Explore ACA Plans:</strong> Visit Healthcare.gov to see what plans and subsidies you qualify for based on your new income.</li>
+                                    <li><strong>Check Medicaid Eligibility:</strong> With a lower income, you may now qualify for Medicaid.</li>
+                                    <li><strong>Compare with COBRA:</strong> COBRA lets you keep your old plan but is often much more expensive than an ACA plan with subsidies.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Pro Tips</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Don't go without coverage, even for a short time. An emergency can be financially devastating.</li>
+                                    <li>ACA subsidies are based on your estimated *yearly* income, so be sure to include unemployment benefits when you apply.</li>
+                                    <li>Use free, official navigators to help you choose a plan. Avoid scam brokers.</li>
+                                </ul>
+                            </div>
+                             <div>
+                                <h3 class="font-semibold text-lg mb-2">Warning Signs of Scam Plans</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Plans that don't mention the ACA or have a clear provider network.</li>
+                                    <li>Lack of coverage for prescriptions or emergencies.</li>
+                                    <li>Brokers who pressure you to enroll immediately.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Trusted Resources</h3>
+                                <p class="text-gray-600">Use official websites for enrollment and help.</p>
+                                <p class="text-gray-600"><strong>Marketplace Phone:</strong> <a href="tel:1-800-318-2596" class="text-blue-600 hover:underline">1-800-318-2596</a></p>
+                                <p class="text-gray-600"><strong>Marketplace Website:</strong> <a href="https://www.healthcare.gov" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">www.healthcare.gov</a></p>
+                                <p class="text-gray-600"><strong>Find Local Help:</strong> <a href="https://localhelp.healthcare.gov" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">localhelp.healthcare.gov</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Medicaid Tab -->
+                    <div id="medicaid" class="tab-content">
+                        <h2 class="text-2xl font-bold mb-4 text-blue-700">Medicaid Redetermination Checklist (2025)</h2>
+                        <div class="important-notice">
+                            <h3 class="font-bold text-lg text-yellow-800">Action Required: You Must Renew Your Medicaid Coverage</h3>
+                            <p class="text-yellow-700 mt-1">States are now required to check every recipient's eligibility. Your Medicaid coverage is no longer guaranteed to renew automatically. If you do not respond to mail or online notices from your state's Medicaid office, your benefits could be terminated. It is essential to update your contact information and submit your renewal paperwork on time to avoid losing your health coverage.</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Steps to Take for Renewal</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li><strong>Update Your Contact Info:</strong> Make sure your state Medicaid office has your current mailing address and phone number.</li>
+                                    <li><strong>Watch Your Mail:</strong> Open all mail from your state's health department. Your renewal packet will be sent this way.</li>
+                                    <li><strong>Respond Quickly:</strong> Return your renewal paperwork by the deadline, usually within 30 days.</li>
+                                    <li><strong>Appeal if Denied:</strong> If you believe you are still eligible but get denied, you have the right to appeal.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Documents You'll Need</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li><strong>Proof of Identity:</strong> Driver's license, state ID, or birth certificate.</li>
+                                    <li><strong>Proof of Income:</strong> Recent pay stubs, Social Security benefit letter, or unemployment statement.</li>
+                                    <li><strong>Proof of Residency:</strong> A recent utility bill or lease agreement with your name and address.</li>
+                                    <li><strong>Household Info:</strong> Names and birthdates of everyone in your household.</li>
+                                </ul>
+                            </div>
+                             <div>
+                                <h3 class="font-semibold text-lg mb-2">Pro Tips</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Keep a copy or photo of every document you submit.</li>
+                                    <li>Use your state's online portal if available—it's often faster.</li>
+                                    <li>Respond even if you think your coverage auto-renews. Many rules have changed.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Need Help?</h3>
+                                <p class="text-gray-600">Contact your state's Medicaid office or the national helpline.</p>
+                                <p class="text-gray-600"><strong>Phone:</strong> <a href="tel:1-877-267-2323" class="text-blue-600 hover:underline">1-877-267-2323</a></p>
+                                <p class="text-gray-600"><strong>Website:</strong> <a href="https://www.medicaid.gov/renewals" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">www.medicaid.gov/renewals</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Medicare Cuts Tab -->
+                    <div id="medicare-cuts" class="tab-content">
+                        <h2 class="text-2xl font-bold mb-4 text-blue-700">Medicare Cuts Survival Guide (2025-2026)</h2>
+                        <div class="important-notice">
+                            <h3 class="font-bold text-lg text-yellow-800">Action Required: Your Medicare Benefits May Be Reduced</h3>
+                            <p class="text-yellow-700 mt-1">Planned annual cuts to Medicare are scheduled to begin in 2026. These changes could lead to higher out-of-pocket costs, reduced access to certain doctors, and changes in covered services. It is essential to review your current coverage, understand how these cuts might affect you, and prepare for potential changes during the upcoming Open Enrollment period.</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Steps to Take Now</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li><strong>Review your current plan</strong> (Advantage or Part D) for any at-risk benefits.</li>
+                                    <li><strong>Evaluate a Medigap plan</strong> to see if it could help cover potential new costs.</li>
+                                    <li><strong>Reassess your prescription drug coverage,</strong> as some medications may no longer be covered.</li>
+                                    <li><strong>Watch for official letters</strong> from Medicare or your plan administrator explaining changes.</li>
+                                    <li><strong>Check your protections</strong> with your state Medicare office, especially if you are transgender, disabled, or receiving gender-affirming care.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Tips & Warnings</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Cuts to provider payments may reduce access to doctors, especially in rural areas. Ask your doctor if they plan to remain in-network.</li>
+                                    <li>You may see higher co-pays or fewer approved visits for services like physical therapy, mental health, or home healthcare.</li>
+                                    <li><strong>Do not auto-renew your plan.</strong> Review all changes during Open Enrollment (Oct 15 - Dec 7). <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Medicare%20Open%20Enrollment&dates=20251015/20251208&details=Time%20to%20review%20and%20change%20your%20Medicare%20plan." target="_blank" rel="noopener noreferrer" class="ml-2 text-blue-600 hover:underline text-sm font-medium">[+ Add to Calendar]</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Resources & Hotlines</h3>
+                                <p class="text-gray-600">Only use trusted government or non-profit resources. Be wary of scams.</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li><strong>Official Plan Finder:</strong> <a href="https://www.medicare.gov/plan-compare" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">medicare.gov/plan-compare</a></li>
+                                    <li><strong>Advocacy & Information:</strong> <a href="https://www.medicarerights.org" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Medicare Rights Center</a></li>
+                                    <li><strong>Free Local Counseling (SHIP):</strong> <a href="https://www.shiphelp.org" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">shiphelp.org</a></li>
+                                    <li><strong>Medicare Help Line:</strong> <a href="tel:1-800-633-4227" class="text-blue-600 hover:underline">1-800-MEDICARE (1-800-633-4227)</a></li>
+                                    <li><strong>Eldercare Locator:</strong> <a href="https://acl.gov/ltc/basic-needs/finding-local-services" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Find Local Services</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Planned Parenthood Tab -->
+                    <div id="planned-parenthood" class="tab-content">
+                        <h2 class="text-2xl font-bold mb-4 text-blue-700">Planned Parenthood & Reproductive Health Guide (2025)</h2>
+                        <div class="important-notice">
+                            <h3 class="font-bold text-lg text-yellow-800">Action Required: Your Access to Reproductive Health Services May Be At Risk</h3>
+                            <p class="text-yellow-700 mt-1">New legislation may affect providers like Planned Parenthood, impacting access to essential, non-abortion services including cancer screenings, STI testing, and birth control for Medicaid recipients. It is crucial to confirm service availability at your local clinic and prepare alternative plans for your reproductive healthcare needs.</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Steps to Take Now</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li><strong>Call your clinic</strong> to confirm which services will be affected and if they still accept your insurance.</li>
+                                    <li><strong>Locate alternative clinics</strong> or community health centers nearby using the resources below.</li>
+                                    <li><strong>Schedule essential exams</strong> and contraception refills as soon as possible to avoid a lapse in care.</li>
+                                    <li>Consider long-acting reversible contraceptives (LARCs) like IUDs or implants for longer-term coverage.</li>
+                                    <li>Explore telehealth and mail-order birth control options as a backup.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Tips & Warnings</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Even if a clinic is targeted for providing abortions, many of its other health services are unrelated and critical for community health.</li>
+                                    <li>Telehealth providers and advocacy groups may offer temporary or low-cost solutions.</li>
+                                    <li>Local reproductive justice organizations often help coordinate care alternatives and may offer financial assistance.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Resources & Hotlines</h3>
+                                <p class="text-gray-600">Use these resources to find care, funding, and legal information.</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li><strong>Find a Clinic:</strong> <a href="https://www.plannedparenthood.org" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Planned Parenthood</a></li>
+                                    <li><strong>Find a Community Health Center:</strong> <a href="https://findahealthcenter.hrsa.gov" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">HRSA Health Center Finder</a></li>
+                                    <li><strong>Financial Help for Abortions:</strong> <a href="https://abortionfunds.org" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">National Network of Abortion Funds</a></li>
+                                    <li><strong>Legal Help:</strong> <a href="tel:1-844-868-2812" class="text-blue-600 hover:underline">Repro Legal Helpline (1-844-868-2812)</a></li>
+                                    <li><strong>General Support:</strong> <a href="tel:1-800-230-7526" class="text-blue-600 hover:underline">Planned Parenthood Support Line (1-800-230-PLAN)</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Prescription Discounts Tab -->
+                    <div id="prescriptions" class="tab-content">
+                        <h2 class="text-2xl font-bold mb-4 text-blue-700">Prescription Discount Guide (2025)</h2>
+                        <div class="important-notice">
+                            <h3 class="font-bold text-lg text-yellow-800">Action Required: Don't Overpay for Your Medication</h3>
+                            <p class="text-yellow-700 mt-1">The cost of prescription drugs can be a significant burden, even for those with insurance. Never assume the price you are first quoted is the lowest price available. Using discount programs and comparing pharmacies is not just for the uninsured; it is an essential step for everyone to ensure access to necessary medication without facing financial hardship. You must be your own advocate to find the best price.</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">How to Save on Medications</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li><strong>Use Discount Apps & Websites:</strong> Services like GoodRx, SingleCare, and CostPlus Drugs can offer prices lower than insurance copays.</li>
+                                    <li><strong>Compare Pharmacy Prices:</strong> Use a discount app to see which local pharmacy has the best price for your prescription.</li>
+                                    <li><strong>Ask for Generics:</strong> Generic versions are often significantly cheaper than brand-name drugs.</li>
+                                    <li><strong>Check Manufacturer Programs:</strong> Drug manufacturers sometimes offer patient assistance programs (PAPs) for those with high costs.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Top Resources</h3>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-600">
+                                    <div>
+                                        <h4 class="font-medium">Discount Programs:</h4>
+                                        <ul class="list-disc list-inside">
+                                            <li><a href="https://www.goodrx.com" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">GoodRx</a></li>
+                                            <li><a href="https://www.costplusdrugs.com/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">CostPlus Drugs</a></li>
+                                            <li><a href="https://www.singlecare.com" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">SingleCare</a></li>
+                                            <li><a href="https://www.blinkhealth.com" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Blink Health</a></li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-medium">Low-Cost Pharmacies:</h4>
+                                        <ul class="list-disc list-inside">
+                                            <li>Walmart ($4 generics list)</li>
+                                            <li>Costco (membership may not be needed for pharmacy)</li>
+                                            <li>Check local grocery store pharmacies for specials.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                             <div>
+                                <h3 class="font-semibold text-lg mb-2">Pro Tips</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>You can't combine insurance with a discount coupon, but you can always ask the pharmacist to use whichever is cheaper.</li>
+                                    <li>Always ask the pharmacist for the price *before* paying.</li>
+                                    <li>If a medication is too expensive, ask your doctor if there is a less expensive therapeutic alternative.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Need More Help?</h3>
+                                <p class="text-gray-600">For help finding patient assistance programs:</p>
+                                <p class="text-gray-600"><strong>Partnership for Prescription Assistance:</strong> <a href="tel:1-888-477-2669" class="text-blue-600 hover:underline">1-888-477-2669</a></p>
+                                <p class="text-gray-600"><strong>Website:</strong> <a href="https://www.pparx.org" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">www.pparx.org</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Rural Hospitals Tab -->
+                    <div id="rural-hospitals" class="tab-content">
+                        <h2 class="text-2xl font-bold mb-4 text-blue-700">Rural Hospital Closures Survival Guide (2025)</h2>
+                        <div class="important-notice">
+                            <h3 class="font-bold text-lg text-yellow-800">Action Required: Your Local Hospital May Be At Risk</h3>
+                            <p class="text-yellow-700 mt-1">Rural hospitals are closing at record rates due to funding cuts and workforce shortages. This poses a direct threat to emergency, maternity, and general care for entire communities. It is critical to identify alternative care options and prepare a plan before you face a medical emergency.</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Steps to Take Now</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li><strong>Identify the nearest alternative hospitals</strong> or urgent care centers and verify they are open.</li>
+                                    <li><strong>Ask your provider</strong> if they will continue practicing locally or are relocating.</li>
+                                    <li><strong>Discuss transportation plans</strong> with family in case of a medical emergency.</li>
+                                    <li><strong>Make a proactive care plan</strong> if you are pregnant or managing a chronic illness.</li>
+                                    <li>Contact your state representatives to advocate for rural healthcare funding.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Tips & Warnings</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Hospital closures often lead to longer ER wait times and ambulance delays.</li>
+                                    <li>Do not rely on online maps for facility status in rural areas—always call to verify.</li>
+                                    <li>Look into telehealth services that accept your insurance or Medicare.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Resources & Hotlines</h3>
+                                <p class="text-gray-600">Use these resources to find information and advocate for local care.</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li><strong>Information Hub:</strong> <a href="https://www.ruralhealthinfo.org" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Rural Health Info Hub</a></li>
+                                    <li><strong>Advocacy Group:</strong> <a href="https://www.ruralhealth.us" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">National Rural Health Association</a></li>
+                                    <li><strong>Find Telehealth Providers:</strong> <a href="https://findahealthcenter.hrsa.gov" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">findahealthcenter.hrsa.gov</a></li>
+                                    <li><strong>Rural Health Helpline:</strong> <a href="tel:1-800-638-0742" class="text-blue-600 hover:underline">1-800-638-0742</a></li>
+                                    <li><strong>Community Care Access:</strong> Call 211 or <a href="tel:1-877-696-6775" class="text-blue-600 hover:underline">1-877-696-6775</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SNAP Tab -->
+                    <div id="snap" class="tab-content">
+                        <h2 class="text-2xl font-bold mb-4 text-blue-700">SNAP (Food Assistance) Guide (2025)</h2>
+                        <div class="important-notice">
+                            <h3 class="font-bold text-lg text-yellow-800">Action Required: Know the New SNAP Rules</h3>
+                            <p class="text-yellow-700 mt-1">Stricter work requirements for the Supplemental Nutrition Assistance Program (SNAP) are now in effect. Many adults will need to provide proof of work, training, or volunteer hours to maintain their food assistance. Incomplete applications or missed appointments can lead to a loss of benefits. It is vital to understand the new rules, log your hours, and respond to all communications from your state SNAP office.</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Steps to Take</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li><strong>Check new work requirements:</strong> Adults aged 18-64 may need to prove 80 hours per month of work, training, or volunteer activity.</li>
+                                    <li><strong>Gather your documents:</strong> Collect pay stubs, training program verification, or proof of exemption (e.g., disability, caring for a child).</li>
+                                    <li><strong>Apply or renew as early as possible.</strong> Processing delays are possible.</li>
+                                    <li><strong>Track all communications</strong> from your state's SNAP office and respond immediately.</li>
+                                    <li><strong>If you are denied, seek help.</strong> Call 211 or your local food bank for assistance with appeals or emergency food.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Pro Tips</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Start logging your work, volunteer, or training hours now.</li>
+                                    <li>Check your state's specific list of exemptions from the work requirement. You may qualify without realizing it.</li>
+                                    <li>You can reapply even if you have been denied before. Don't give up.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Help, Legal Aid & Advocacy</h3>
+                                <p class="text-gray-600">These resources can help you apply, appeal a decision, or find emergency food assistance.</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li><strong>Find Your State SNAP Office:</strong> <a href="https://www.fns.usda.gov/snap/state-directory" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">SNAP State Directory</a></li>
+                                    <li><strong>General Help & Food Assistance:</strong> Call 211 or visit <a href="https://www.211.org" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">211.org</a></li>
+                                    <li><strong>National Hunger Hotline:</strong> <a href="tel:1-866-348-6479" class="text-blue-600 hover:underline">1-866-3-HUNGRY</a></li>
+                                    <li><strong>Find Free Legal Aid:</strong> <a href="https://www.lsc.gov/what-legal-aid/find-legal-aid" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Legal Services Corporation</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Official USDA Resources</h3>
+                                <p class="text-gray-600">For official information from the U.S. Department of Agriculture:</p>
+                                <p class="text-gray-600"><strong>Website:</strong> <a href="https://www.fns.usda.gov/snap" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">www.fns.usda.gov/snap</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Security Tab -->
+                    <div id="social-security" class="tab-content">
+                        <h2 class="text-2xl font-bold mb-4 text-blue-700">Social Security Preparation Guide (2025)</h2>
+                        <div class="important-notice">
+                            <h3 class="font-bold text-lg text-yellow-800">Action Required: Prepare for Your Financial Future</h3>
+                            <p class="text-yellow-700 mt-1">Potential policy shifts and economic uncertainty make it more important than ever to actively manage your Social Security planning. Your future benefits depend on your earnings record and the age at which you claim them. Understanding the rules, checking your records for accuracy, and making a clear plan now can significantly impact your financial security in retirement.</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Steps to Take</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li><strong>Create a <em>my</em>Social Security account</strong> at SSA.gov to track your earnings and get benefit estimates.</li>
+                                    <li><strong>Check your earnings record for errors.</strong> Your benefits are based on your 35 highest-earning years.</li>
+                                    <li><strong>Know your Full Retirement Age (FRA).</strong> It is increasing to 67 for those born after 1960. Claiming early reduces your benefits permanently.</li>
+                                    <li><strong>Consider delaying benefits up to age 70.</strong> Each year you wait past your FRA increases your monthly payment.</li>
+                                    <li><strong>Factor in taxes.</strong> Depending on your total income, up to 85% of your Social Security benefits could be taxable.</li>
+                                    <li><strong>Explore spousal or survivor benefits</strong> if you are divorced or widowed.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Pro Tips</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li>Use the <strong>Retirement Estimator</strong> on the SSA.gov website to run different scenarios.</li>
+                                    <li>Double-check your earnings history for gaps, especially if you were a freelancer or part-time worker.</li>
+                                    <li>Make a detailed retirement budget that accounts for inflation and potential medical expenses.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Official Tools & Planning Help</h3>
+                                <p class="text-gray-600">Use these free, official government resources for planning.</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li><strong>mySocialSecurity Portal:</strong> <a href="https://www.ssa.gov/myaccount" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">www.ssa.gov/myaccount</a></li>
+                                    <li><strong>Retirement Estimator:</strong> <a href="https://www.ssa.gov/benefits/retirement/estimator.html" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">www.ssa.gov/benefits/retirement/estimator.html</a></li>
+                                    <li><strong>Eligibility Rules:</strong> <a href="https://www.ssa.gov/benefits/retirement/planner/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">www.ssa.gov/benefits/retirement/planner</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Need Help?</h3>
+                                <p class="text-gray-600">For direct assistance from the Social Security Administration:</p>
+                                <p class="text-gray-600"><strong>Phone:</strong> <a href="tel:1-800-772-1213" class="text-blue-600 hover:underline">1-800-772-1213</a></p>
+                                <p class="text-gray-600"><strong>Website:</strong> <a href="https://www.ssa.gov" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">www.ssa.gov</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Student Loans Tab -->
+                    <div id="student-loans" class="tab-content">
+                        <h2 class="text-2xl font-bold mb-4 text-blue-700">Student Loan Survival Guide (2025)</h2>
+                        <div class="important-notice">
+                            <h3 class="font-bold text-lg text-yellow-800">Action Required: Your Repayment Plan and Forgiveness Path May Change</h3>
+                            <p class="text-yellow-700 mt-1">Significant changes to federal student loan programs are expected. Popular repayment plans like SAVE and forgiveness programs like Public Service Loan Forgiveness (PSLF) are facing restrictions or elimination. This could lead to higher monthly payments and the loss of anticipated loan forgiveness. You must review your current loan status and understand how these changes might affect you.</p>
+                        </div>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">What To Do</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li><strong>Check your current repayment plan.</strong> If you are on the SAVE plan, be aware it may be phased out.</li>
+                                    <li><strong>Understand new repayment terms.</strong> Income-Driven Repayment (IDR) plans may be extended up to 30 years for some borrowers.</li>
+                                    <li><strong>Prepare for payment changes.</strong> Monthly payments may increase, especially for those in low-income jobs.</li>
+                                    <li><strong>Know the new borrowing limits.</strong> Grad PLUS Loans are ending, and new lifetime borrowing caps will apply.</li>
+                                    <li><strong>Verify your PSLF eligibility.</strong> The Public Service Loan Forgiveness program is being restricted, and many nonprofit workers may lose eligibility.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Pro Tips</h3>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li><strong>Certify your PSLF employment NOW.</strong> Keep copies of all payments and employment certifications before rules change.</li>
+                                    <li>Use the <strong>Loan Simulator</strong> on StudentAid.gov to estimate how your payments could change.</li>
+                                    <li>Document your entire payment history. Future forgiveness credits may be harder to prove.</li>
+                                    <li>If considering graduate school, reassess costs and federal loan availability immediately.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Official Tools & Resources</h3>
+                                <p class="text-gray-600">Avoid third-party 'forgiveness services' that charge fees. Use these official government resources for free.</p>
+                                <ul class="list-disc list-inside space-y-1 text-gray-600">
+                                    <li><strong>Main Portal:</strong> <a href="https://studentaid.gov/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">StudentAid.gov</a> for all repayment plans and eligibility.</li>
+                                    <li><strong>Loan Simulator:</strong> <a href="https://studentaid.gov/loan-simulator/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">studentaid.gov/loan-simulator</a></li>
+                                    <li><strong>PSLF Help Tool:</strong> <a href="https://studentaid.gov/pslf/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">studentaid.gov/pslf</a></li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Need Help?</h3>
+                                <p class="text-gray-600">For direct assistance with your federal student loans:</p>
+                                <p class="text-gray-600"><strong>Phone:</strong> <a href="tel:1-800-433-3243" class="text-blue-600 hover:underline">1-800-433-3243</a> (Federal Student Aid Information Center)</p>
+                                <p class="text-gray-600"><strong>Website:</strong> <a href="https://studentaid.gov/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">www.studentaid.gov</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+            <!-- This container holds the search results and is hidden by default -->
+            <div id="search-results-container" class="py-6" style="display: none;">
+                <!-- Dynamically generated search results will appear here -->
+            </div>
+
+        </div>
+    </main>
+    
+    <footer class="text-center py-6 text-gray-500 text-sm">
+        <p>This website provides general information and is not a substitute for professional or legal advice. Always consult with official sources.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Element References ---
+            const tabs = document.querySelectorAll('.tab-btn');
+            const tabViewContainer = document.getElementById('tab-view-container');
+            const searchInput = document.getElementById('searchInput');
+            const searchResultsContainer = document.getElementById('search-results-container');
+            
+            // --- Store Tab Data for Searching ---
+            // This creates an array of objects, where each object holds the ID, title, and text content of a tab.
+            let searchData = Array.from(document.querySelectorAll('.tab-content')).map(tab => {
+                return {
+                    id: tab.id,
+                    title: tab.querySelector('h2').textContent,
+                    textContent: tab.textContent
+                };
+            });
+
+            // --- Tab Switching Functionality ---
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Deactivate all tabs and content
+                    tabs.forEach(item => item.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+                    // Activate the clicked tab and its content
+                    tab.classList.add('active');
+                    document.getElementById(tab.dataset.tab).classList.add('active');
+                });
+            });
+
+            // --- Site-Wide Search Functionality ---
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.trim().toLowerCase();
+                
+                // If search term is too short, show tabs and hide results
+                if (searchTerm.length < 3) {
+                    searchResultsContainer.style.display = 'none';
+                    searchResultsContainer.innerHTML = ''; // Clear old results
+                    tabViewContainer.style.display = 'block';
+                    return;
+                }
+                
+                // Refresh search data in case new tabs were added dynamically
+                searchData = Array.from(document.querySelectorAll('.tab-content')).map(tab => {
+                    return {
+                        id: tab.id,
+                        title: tab.querySelector('h2').textContent,
+                        textContent: tab.textContent
+                    };
+                });
+
+
+                // If search term is long enough, hide tabs and show results container
+                tabViewContainer.style.display = 'none';
+                searchResultsContainer.style.display = 'block';
+                searchResultsContainer.innerHTML = ''; // Clear previous results
+
+                const regex = new RegExp(searchTerm.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'gi');
+                let resultsFound = false;
+                const resultsFragment = document.createDocumentFragment();
+
+                searchData.forEach(tab => {
+                    if (tab.textContent.toLowerCase().includes(searchTerm)) {
+                        resultsFound = true;
+                        
+                        // Create a result card for each match
+                        const resultCard = document.createElement('div');
+                        resultCard.className = 'mb-6 p-4 border rounded-lg shadow-sm bg-gray-50 hover:bg-gray-100 transition-colors';
+                        
+                        // Create a snippet of text around the first match
+                        const matchIndex = tab.textContent.toLowerCase().indexOf(searchTerm);
+                        const start = Math.max(0, matchIndex - 70);
+                        const end = Math.min(tab.textContent.length, matchIndex + searchTerm.length + 70);
+                        let snippet = tab.textContent.substring(start, end);
+                        
+                        // Highlight the search term within the snippet
+                        snippet = snippet.replace(regex, (match) => `<span class="search-highlight">${match}</span>`);
+
+                        resultCard.innerHTML = `
+                            <h3 class="text-xl font-bold text-blue-700 mb-2">${tab.title}</h3>
+                            <p class="text-gray-600 mb-4">...${snippet}...</p>
+                            <button class="go-to-tab-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" data-tab-target="${tab.id}">
+                                Go to this section
+                            </button>
+                        `;
+                        resultsFragment.appendChild(resultCard);
+                    }
+                });
+
+                if (resultsFound) {
+                    searchResultsContainer.appendChild(resultsFragment);
+                } else {
+                    searchResultsContainer.innerHTML = '<p class="text-gray-600 text-center">No results found for your search.</p>';
+                }
+            });
+
+            // --- Click Handler for "Go to section" Buttons ---
+            searchResultsContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('go-to-tab-btn')) {
+                    const targetTabId = e.target.dataset.tabTarget;
+                    
+                    // 1. Clear search input
+                    searchInput.value = '';
+
+                    // 2. Hide search results and show the main tab view
+                    searchResultsContainer.style.display = 'none';
+                    searchResultsContainer.innerHTML = '';
+                    tabViewContainer.style.display = 'block';
+
+                    // 3. Find the corresponding tab button and click it to switch views
+                    const targetTabButton = document.querySelector(`.tab-btn[data-tab="${targetTabId}"]`);
+                    if (targetTabButton) {
+                        targetTabButton.click();
+                    }
+                }
+            });
+        });
+        
+        // --- Google Translate ---
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
